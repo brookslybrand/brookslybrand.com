@@ -12,6 +12,8 @@
     "lint": "eslint --ignore-path .gitignore --ext .js,.ts,.tsx ."
   },
   "dependencies": {
+    "@mdx-js/loader": "^1.6.18",
+    "@next/mdx": "^9.5.3",
     "next": "9.5.3",
     "react": "16.13.1",
     "react-dom": "16.13.1",
