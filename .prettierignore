@@ -1,4 +1,11 @@
-.cache
-package.json
+.eslintignore
+.eslintrc
+.prettierignore
+.prettierrc
+
+public/
+.next/
+styles/
 package-lock.json
-public
+
+node_modules/

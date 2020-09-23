@@ -1,46 +1,42 @@
 {
-  "name": "brookslybrand.com",
-  "description": "My website or something",
+  "name": "delete",
   "version": "0.1.0",
-  "author": "Brooks Lybrand <brookslybrand@gmail.com>",
+  "private": true,
+  "scripts": {
+    "build:styles": "npx tailwindcss build styles/tailwind.css -o styles/index.css",
+    "predev": "npm run build:styles",
+    "dev": "next dev",
+    "prebuild": "NODE_ENV=production npm run build:styles",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint --ignore-path .gitignore --ext .js,.ts,.tsx ."
+  },
   "dependencies": {
-    "@mdx-js/mdx": "^1.6.17",
-    "@mdx-js/react": "^1.6.17",
-    "gatsby": "^2.24.54",
-    "gatsby-image": "^2.4.17",
-    "gatsby-plugin-manifest": "^2.4.28",
-    "gatsby-plugin-mdx": "^1.2.39",
-    "gatsby-plugin-offline": "^3.2.27",
-    "gatsby-plugin-react-helmet": "^3.3.10",
-    "gatsby-plugin-sharp": "^2.6.32",
-    "gatsby-source-filesystem": "^2.3.28",
-    "gatsby-transformer-sharp": "^2.5.14",
-    "prop-types": "^15.7.2",
-    "react": "^16.12.0",
-    "react-dom": "^16.12.0",
-    "react-helmet": "^6.1.0"
+    "next": "9.5.3",
+    "react": "16.13.1",
+    "react-dom": "16.13.1",
+    "tailwindcss": "^1.8.10"
   },
   "devDependencies": {
-    "prettier": "2.1.1"
-  },
-  "keywords": [
-    "gatsby"
-  ],
-  "license": "0BSD",
-  "scripts": {
-    "build": "gatsby build",
-    "develop": "gatsby develop",
-    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
-    "start": "npm run develop",
-    "serve": "gatsby serve",
-    "clean": "gatsby clean",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/brookslybrand/brookslybrand.com"
-  },
-  "bugs": {
-    "url": "https://github.com/brookslybrand/brookslybrand.com/issues"
+    "@babel/core": "^7.11.6",
+    "@types/node": "^14.11.2",
+    "@types/react": "^16.9.49",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^7.7.0",
+    "eslint-config-prettier": "^6.7.0",
+    "eslint-config-react-app": "^5.2.1",
+    "eslint-config-standard": "^14.1.0",
+    "eslint-config-standard-react": "^9.2.0",
+    "eslint-plugin-flowtype": "^5.2.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-jsx-a11y": "^6.3.1",
+    "eslint-plugin-node": "^11.0.0",
+    "eslint-plugin-prettier": "^3.1.1",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-react": "^7.17.0",
+    "eslint-plugin-react-hooks": "^4.1.2",
+    "eslint-plugin-standard": "^4.0.1",
+    "prettier": "^2.1.1",
+    "typescript": "^4.0.3"
   }
 }
