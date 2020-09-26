@@ -10,23 +10,23 @@ export default function App() {
       </Head>
       <h1>This is my website</h1>
       <marquee>
-        🚧 Warning: This site is under construction in consequentially horrible
-        🚧
+        🚧 Warning: This site is under construction in consequentially
+        horrible🚧
       </marquee>
-      <Link href='/todos'>
+      <Link href="/todos">
         <a>I've got some things I want to work on here</a>
       </Link>
       <p>There is nothing here. Why are you here?</p>
       <p>Checkout some pages I didn't make:</p>
-      <Link href='/page-2'>
+      <Link href="/page-2">
         <a>Go to page 2</a>
       </Link>{' '}
       <br />
-      <Link href='/using-typescript'>
+      <Link href="/using-typescript">
         <a>Go to "Using TypeScript"</a>
       </Link>
       <p style={{ marginTop: '2rem' }}>I did make this, it's very nice</p>
-      <Link href='/a-post'>
+      <Link href="/a-post">
         <a>Check it out</a>
       </Link>
     </>
