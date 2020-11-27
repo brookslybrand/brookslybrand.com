@@ -8,10 +8,24 @@ import {
 
 import '../styles/index.css'
 
-export default function App({ Component, pageProps }: AppProps) {
+type ComponentWithPageLayout = {
+  Component: AppProps['Component'] & {
+    PageLayout?: React.ComponentType
+  }
+}
+
+export default function App({
+  Component,
+  pageProps,
+}: AppProps & ComponentWithPageLayout) {
+  // get a page root if one was set
+  const PageLayout =
+    Component.PageLayout ||
+    (({ children }: { children: React.ReactNode }) => <>{children}</>)
+
   return (
-    <div className="max-w-6xl p-4 flex flex-col mx-auto">
-      <nav className="h-16 flex flex-row items-center justify-between">
+    <div className="flex flex-col max-w-6xl p-4 mx-auto">
+      <nav className="flex flex-row items-center justify-between h-16">
         <Link href="/">
           <a className="text-3xl text-blue-800">Home</a>
         </Link>
@@ -23,9 +37,11 @@ export default function App({ Component, pageProps }: AppProps) {
         </div>
       </nav>
       <main className="mt-4">
-        <Component {...pageProps} />
+        <PageLayout>
+          <Component {...pageProps} />
+        </PageLayout>
       </main>
-      <footer className="mt-4 flex flex-row justify-between">
+      <footer className="flex flex-row justify-between mt-4">
         <p className="text-lg text-blue-800">
           Brooks Lybrand © {new Date().getFullYear()}
         </p>
