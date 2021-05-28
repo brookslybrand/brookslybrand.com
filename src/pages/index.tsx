@@ -11,8 +11,8 @@ export default function App() {
         <meta title="Brooks Lybrand's home page" />
       </Head>
       <div className="m-auto max-w-prose mt-8 px-4">
-        <h1 className="text-6xl text-green-900">Hi, I'm Brooks</h1>
-        <section className="mt-6 text-2xl space-y-2 leading-relaxed text-justify">
+        <h1 className="text-4xl md:text-6xl text-green-900">Hi, I'm Brooks</h1>
+        <section className="mt-6 text-lg md:text-2xl space-y-2 leading-relaxed text-justify">
           <p>
             I am a Web Developer who specializes in building highly interactive,
             data-rich React applications.
@@ -24,10 +24,10 @@ export default function App() {
           </p>
         </section>
         <section className="mt-10">
-          <h2 className="text-3xl text-green-900">
+          <h2 className="text-xl md:text-3xl text-green-900">
             Check out some things I'm working on
           </h2>
-          <ul className="text-2xl mt-2 space-y-2 pl-4">
+          <ul className="text-lg md:text-2xl mt-2 space-y-2 pl-4">
             <ListItemLink href="https://www.youtube.com/channel/UCd93bPmP8vplnkr9Jel_osA">
               React Tips with Brooks Lybrand
             </ListItemLink>

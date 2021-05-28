@@ -19,8 +19,8 @@ export default function App({
   pageProps,
 }: AppProps & ComponentWithPageLayout) {
   return (
-    <div className="flex flex-col p-4 min-h-screen">
-      <header>
+    <div className="flex flex-col min-h-screen">
+      <header className="p-4">
         <nav className="flex flex-row items-center justify-between h-16">
           <Link href="/">
             <a className="text-3xl text-blue-700 hover:text-blue-900">Home</a>
@@ -42,7 +42,7 @@ export default function App({
           <Component {...pageProps} />
         )}
       </main>
-      <footer className="flex flex-row justify-between pt-4">
+      <footer className="flex flex-row justify-between p-4 pt-8">
         <p className="text-lg text-blue-900">
           Brooks Lybrand © {new Date().getFullYear()}
         </p>
