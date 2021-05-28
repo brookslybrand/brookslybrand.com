@@ -6,7 +6,7 @@ import {
   AiOutlineYoutube,
 } from 'react-icons/ai'
 
-import '../styles/index.css'
+import '../styles/tailwind.css'
 
 type ComponentWithPageLayout = {
   Component: AppProps['Component'] & {
@@ -41,6 +41,7 @@ export default function App({
           <Component {...pageProps} />
         </PageLayout>
       </main>
+      <h2 className="test">Testing something</h2>
       <footer className="flex flex-row justify-between mt-4">
         <p className="text-lg text-blue-800">
           Brooks Lybrand © {new Date().getFullYear()}
