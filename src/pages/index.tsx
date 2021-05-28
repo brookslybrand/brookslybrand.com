@@ -9,10 +9,15 @@ export default function App() {
         <meta title="Brooks Lybrand's home page" />
       </Head>
       <h1>This is my website</h1>
-      <marquee>
-        🚧 Warning: This site is under construction is consequentially horrible
-        🚧
-      </marquee>
+      <p role="alert">
+        <span role="img" aria-label="">
+          🚧
+        </span>{' '}
+        Warning: This site is under construction is consequentially horrible{' '}
+        <span role="img" aria-label="">
+          🚧
+        </span>
+      </p>
       <Link href="/todos">
         <a>I've got some things I want to work on here</a>
       </Link>
