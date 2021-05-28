@@ -19,21 +19,21 @@ export default function App({
   pageProps,
 }: AppProps & ComponentWithPageLayout) {
   return (
-    <div className="flex flex-col max-w-6xl p-4 mx-auto min-h-screen">
+    <div className="flex flex-col p-4 min-h-screen">
       <header>
         <nav className="flex flex-row items-center justify-between h-16">
           <Link href="/">
-            <a className="text-3xl text-blue-500">Home</a>
+            <a className="text-3xl text-blue-700 hover:text-blue-900">Home</a>
           </Link>
           <div>
             <CustomLink href="/todos">About</CustomLink>
-            <CustomLink href="/page-2">Posts</CustomLink>
+            <CustomLink href="/page-2">Articles</CustomLink>
             <CustomLink href="/using-typescript">Books</CustomLink>
             <CustomLink href="/a-post">Contact</CustomLink>
           </div>
         </nav>
       </header>
-      <main className="pt-4 flex-grow">
+      <main className="flex-grow">
         {Component.PageLayout ? (
           <Component.PageLayout>
             <Component {...pageProps} />
@@ -60,7 +60,7 @@ type CustomLinkProps = {
 function CustomLink({ href, children }: CustomLinkProps) {
   return (
     <Link href={href}>
-      <a className="mr-4 text-xl text-green-900 hover:text-blue-800">
+      <a className="p-2 text-xl text-green-900 hover:text-blue-800">
         {children}
       </a>
     </Link>
@@ -72,19 +72,19 @@ function SocialMediaLinks() {
     <div className="flex flex-row space-x-2">
       <a href="https://twitter.com/BrooksLybrand">
         <AiOutlineTwitter
-          className="text-gray-800 fill-current"
+          className="text-green-900 hover:text-blue-800 fill-current"
           size="1.5rem"
           aria-label="Chat with me on Twitter"
         />
       </a>
       <a
-        className="text-gray-800 fill-current"
+        className="text-green-900 hover:text-blue-800 fill-current"
         href="https://github.com/brookslybrand"
       >
         <AiOutlineGithub size="1.5rem" aria-label="View my GitHub" />
       </a>
       <a
-        className="text-gray-800 fill-current"
+        className="text-green-900 hover:text-blue-800 fill-current"
         href="https://www.youtube.com/channel/UCd93bPmP8vplnkr9Jel_osA"
       >
         <AiOutlineYoutube
