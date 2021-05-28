@@ -68,16 +68,13 @@ function CustomLink({ href, children }: CustomLinkProps) {
 function SocialMediaLinks() {
   return (
     <div className="flex flex-row space-x-2">
-      <a target="_blank" href="https://twitter.com/BrooksLybrand">
+      <a href="https://twitter.com/BrooksLybrand">
         <AiOutlineTwitter size="1.5rem" aria-label="Chat with me on Twitter" />
       </a>
-      <a target="_blank" href="https://github.com/brookslybrand">
+      <a href="https://github.com/brookslybrand">
         <AiOutlineGithub size="1.5rem" aria-label="View my GitHub" />
       </a>
-      <a
-        target="_blank"
-        href="https://www.youtube.com/channel/UCd93bPmP8vplnkr9Jel_osA"
-      >
+      <a href="https://www.youtube.com/channel/UCd93bPmP8vplnkr9Jel_osA">
         <AiOutlineYoutube
           size="1.5rem"
           aria-label="Checkout my YouTube channel"

@@ -10,8 +10,8 @@ export default function App() {
       </Head>
       <h1>This is my website</h1>
       <marquee>
-        🚧 Warning: This site is under construction in consequentially
-        horrible🚧
+        🚧 Warning: This site is under construction is consequentially horrible
+        🚧
       </marquee>
       <Link href="/todos">
         <a>I've got some things I want to work on here</a>
