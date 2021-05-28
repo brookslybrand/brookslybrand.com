@@ -3,9 +3,9 @@ import Document, { Html, Head, Main, NextScript } from 'next/document'
 class MyDocument extends Document {
   render() {
     return (
-      <Html className={globalClassNames}>
+      <Html className="bg-green-100">
         <Head />
-        <body className={globalClassNames}>
+        <body className="text-gray-800">
           <Main />
           <NextScript />
         </body>
@@ -13,8 +13,5 @@ class MyDocument extends Document {
     )
   }
 }
-
-const globalClassNames =
-  'min-h-screen bg-gradient-to-b from-gray-100 to-gray-200'
 
 export default MyDocument
