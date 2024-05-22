@@ -1,5 +1,7 @@
 # Just Start
 
+(this post is unedited. If you see silly mistakes that are bugging you feel free to push up a PR!)
+
 It feels kind of silly, but I've never actually owned a domain
 
 Everyone once in a while I'll look up one I like, but just won't buy it. It's kind of weird.
