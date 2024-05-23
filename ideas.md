@@ -1,0 +1,8 @@
+- Getting Tuberculosis
+- Working in Open Source
+- Executive Function
+- Faith
+- Board Games/Play
+- Being Home Schooled
+- Building Local Community
+- Alcohol
