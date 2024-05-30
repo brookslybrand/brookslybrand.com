@@ -1,4 +1,3 @@
-- Getting Tuberculosis
 - Working in Open Source
 - Executive Function
 - Faith
