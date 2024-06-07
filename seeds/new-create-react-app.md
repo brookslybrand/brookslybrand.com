@@ -139,3 +139,21 @@ So it's more than just finding a "replacement" for CRA, it's finding a _new_ CRA
 React Router gives you all this, it gives you versatile deployment options, and it's built on a library that's been around for 10 years.
 
 Need to expand this more
+
+- Intro
+- What is Create React App
+  - Could do something fun here, like pretend I'm announcing something new
+- List features CRA gives you -- https://github.com/facebook/create-react-app/commit/2badb45121503202bc13a57d2de4236b68493656
+  - Less to Learn
+  - Only One Dependency
+  - No Lock-In
+- CRA is dead
+- Vite as the CRA replacement
+  - Less to Learn — Vite is a simple setup
+  - Only One Dependency — Swapping to Vite
+  - No Lock-In — An exposed Vite plugin is much better than `eject`
+- What is CRA missing?
+  - Look at React docs
+- How Remix solves this
+
+> For almost every app, you're either using a framework, or building a framework. And building a framework is really hard . . . It just takes so much effort, wiring, and consideration. If you're installing an app with React, first thing you're gonna do is you're gonna need routing, and you're gonna need data fetching. You're gonna need to integrate all these things you need to actually build an app. You end up building your own framework. And for a while there we were publishing CRA as a framework, but it just doesn't evolve with all new features that we're providing. And so the recommendation is use a framework or take it upon yourself to build a framework.
