@@ -5,4 +5,3 @@
 - Being Home Schooled
 - Building Local Community
 - Alcohol
-- Open Source
