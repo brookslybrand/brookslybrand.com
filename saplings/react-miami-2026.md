@@ -6,7 +6,7 @@ I have no big single takeaway, more some observations on the tech industry and t
 
 ### Organization
 
-React Miami is awesome, and I have so much respect for Michelle, Rebecca, and Gabe at G2I for running it (5 years now, wow!)
+React Miami is awesome, and I have so much respect for [Michelle](https://x.com/MichelleBakels), [Rebecca](https://x.com/Beccalytics), and [Gabe](https://x.com/gabegreenberg) at G2I for running it (5 years now, wow!)
 
 React Miami is the kind of conference I look to when defining success and casting vision for [Remix Jam](https://jam.remix.run).
 
