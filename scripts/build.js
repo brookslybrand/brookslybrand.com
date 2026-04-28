@@ -166,9 +166,12 @@ function firstHeading(markdown) {
   return match ? match[1].trim() : null;
 }
 
-function pageHtml({ title, body, stylesheetHref = "styles.css" }) {
+function pageHtml({ title, description, body, stylesheetHref = "styles.css" }) {
   const header = renderMarkdown(readContentFile("_header.md"));
   const footer = renderMarkdown(readContentFile("_footer.md"));
+  const descriptionHtml = description
+    ? `\n  <meta name="description" content="${escapeAttribute(description)}">\n  <meta property="og:description" content="${escapeAttribute(description)}">\n  <meta name="twitter:description" content="${escapeAttribute(description)}">`
+    : "";
 
   return `<!doctype html>
 <html lang="en">
@@ -176,6 +179,8 @@ function pageHtml({ title, body, stylesheetHref = "styles.css" }) {
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>${escapeHtml(title)}</title>
+  <meta property="og:title" content="${escapeAttribute(title)}">
+  <meta name="twitter:title" content="${escapeAttribute(title)}">${descriptionHtml}
   <link rel="stylesheet" href="${escapeAttribute(stylesheetHref)}">
 </head>
 <body>
@@ -215,6 +220,7 @@ function buildArticles() {
 
       return {
         date,
+        description: metadata.description,
         fileName,
         href: `posts/${outputName}`,
         isPublished: metadata.published === true,
@@ -269,6 +275,7 @@ function build() {
   for (const article of articles) {
     const html = pageHtml({
       title: article.title,
+      description: article.description,
       body: articleHtml(article),
       stylesheetHref: "../styles.css",
     });
