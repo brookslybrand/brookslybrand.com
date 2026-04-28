@@ -1,3 +1,8 @@
+---
+date: 2026-04-27
+published: true
+---
+
 # React Miami 2026
 
 I attended [React Miami](https://www.reactmiami.com/) on April 23-24, 2026

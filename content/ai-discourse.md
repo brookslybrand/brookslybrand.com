@@ -1,3 +1,8 @@
+---
+date: 2026-04-27
+published: false
+---
+
 tl;dr: it kind of sucks
 
 so many "YNGMI if you don't try this new technique I just learned about yesterday". It's fear mongering. It's FUD. It's not helpful.

@@ -1,3 +1,8 @@
+---
+date: 2024-07-19
+published: false
+---
+
 # Being Bad at Coding
 
 I think I'm getting worse at coding.

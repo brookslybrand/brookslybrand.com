@@ -1,3 +1,8 @@
+---
+date: 2024-05-28
+published: false
+---
+
 # The New Create React App
 
 I'm [giving a talk at React Summit in Amsterdam](https://reactsummit.com/#person-brooks-lybrand) in 15 days. I fly out in lass than 2 weeks from today. I'd prefer not to wait until the plane flight or I get to my hotel room to work on the talk.

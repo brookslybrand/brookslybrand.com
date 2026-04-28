@@ -1,3 +1,8 @@
+---
+date: 2024-08-06
+published: false
+---
+
 I don't anticipate writing much, just some impressions before I jump back into my day-to-day after a 10 day vacation.
 
 This morning, while doing a few chores and stretches, I listened to an speech I'd had I've intended to hear for some months now: [The Inner Ring, by C. S. Lewis](https://www.youtube.com/watch?v=m9NpTcm8kxU).

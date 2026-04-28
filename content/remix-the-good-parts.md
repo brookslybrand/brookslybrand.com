@@ -1,3 +1,8 @@
+---
+date: 2024-07-19
+published: false
+---
+
 # Remix: The Good Parts
 
 This post could go 1 of 2 ways. It could be:

@@ -1,3 +1,8 @@
+---
+date: 2024-06-07
+published: false
+---
+
 # On Open-Source OR On Being Smart
 
 I glorified the idea of working in open-source.

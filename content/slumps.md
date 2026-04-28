@@ -1,3 +1,8 @@
+---
+date: 2024-07-17
+published: false
+---
+
 # Slumps
 
 I feel slumpy today

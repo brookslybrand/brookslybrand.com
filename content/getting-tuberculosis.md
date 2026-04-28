@@ -1,3 +1,8 @@
+---
+date: 2024-05-23
+published: true
+---
+
 # Getting Tuberculosis
 
 You'd think by now I'd know how to spell Tuberculosis without having to look it up.

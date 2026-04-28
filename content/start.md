@@ -1,3 +1,8 @@
+---
+date: 2024-05-22
+published: false
+---
+
 # Just Start
 
 (this post is unedited. If you see silly mistakes that are bugging you feel free to push up a PR!)
