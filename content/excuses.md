@@ -70,11 +70,12 @@ My stack is [Just JavaScript™](https://github.com/brookslybrand/brookslybrand.
 
 I'm sure I'll build more features. I'll just keep asking LLMs to stare deeply into their linear matrices so I can format quotes properly. Eventually it'll get heavy, and I can refactor it or adopt an off-the-shelf solution. Eventually I'll also make it look a little better. For posterity sake, here's what we've got
 
-"lol it's the hilarious styles" - Ryan
+> lol it's the hilarious styles
+> -Ryan
 
 Thanks Ryan, you gave them to me.
 
-## Things that still suck
+## Things That Still Stuck
 
 There are a lot of things that suck about my website/blog
 
@@ -84,3 +85,14 @@ There are a lot of things that suck about my website/blog
 - I don't have any unique styles or branding
 
 I'll probably improve it over time, or maybe I won't. After all, all I'm trying to do is write more.
+
+## The Lesson
+
+- Clarify what you actually want (for me, to write more)
+- Clarify the purpose (because it helps me think)
+- Remove excuses
+- Find people who believe in you
+- In order for someone to believe in you:
+  - Build relationships and trust
+  - Do things worthy of being believed in
+    - Put yourself out there, over and over again, and learn
