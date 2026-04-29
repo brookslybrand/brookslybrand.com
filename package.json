@@ -1,6 +1,10 @@
 {
   "scripts": {
     "build": "node scripts/build.js",
+    "preview": "pnpm run build && serve dist",
     "new": "node scripts/new.js"
+  },
+  "devDependencies": {
+    "serve": "^14.2.6"
   }
 }

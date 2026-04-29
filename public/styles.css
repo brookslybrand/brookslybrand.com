@@ -36,8 +36,8 @@ a:hover {
 h1,
 h2,
 h3 {
-  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Icons",
-    "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display",
+    "SF Pro Icons", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 600;
   letter-spacing: -0.025em;
   color: #1d1d1f;
@@ -77,6 +77,13 @@ ul {
 
 p {
   margin: 1rem 0;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  border-radius: 0.25rem;
 }
 
 ul {

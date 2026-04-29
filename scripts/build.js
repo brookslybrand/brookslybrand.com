@@ -29,6 +29,10 @@ function renderInline(markdown) {
   html = html.replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>");
   html = html.replace(/\*([^*]+)\*/g, "<em>$1</em>");
   html = html.replace(
+    /!\[([^\]]*)\]\(([^)]+)\)/g,
+    (_match, alt, src) => `<img src="${escapeAttribute(src)}" alt="${alt}">`,
+  );
+  html = html.replace(
     /\[([^\]]+)\]\(([^)]+)\)/g,
     (_match, label, href) => `<a href="${escapeAttribute(href)}">${label}</a>`,
   );
