@@ -7,6 +7,7 @@ const rootDir = path.resolve(__dirname, "..");
 const contentDir = path.join(rootDir, "content");
 const publicDir = path.join(rootDir, "public");
 const distDir = path.join(rootDir, "dist");
+const siteUrl = "https://brookslybrand.com";
 
 const articlePattern = /^(?:(\d{4}-\d{2}-\d{2})-)?(.+)\.md$/;
 
@@ -20,6 +21,12 @@ function escapeHtml(value) {
 
 function escapeAttribute(value) {
   return escapeHtml(value).replace(/'/g, "&#39;");
+}
+
+function absoluteUrl(value) {
+  if (/^[a-z][a-z\d+.-]*:/i.test(value)) return value;
+  if (value.startsWith("//")) return `https:${value}`;
+  return new URL(value.startsWith("/") ? value : `/${value}`, siteUrl).toString();
 }
 
 function renderInline(markdown) {
@@ -217,11 +224,14 @@ function firstHeading(markdown) {
   return match ? match[1].trim() : null;
 }
 
-function pageHtml({ title, description, body, stylesheetHref = "styles.css" }) {
+function pageHtml({ title, description, ogImage, body, stylesheetHref = "styles.css" }) {
   const header = renderMarkdown(readContentFile("_header.md"));
   const footer = renderMarkdown(readContentFile("_footer.md"));
   const descriptionHtml = description
     ? `\n  <meta name="description" content="${escapeAttribute(description)}">\n  <meta property="og:description" content="${escapeAttribute(description)}">\n  <meta name="twitter:description" content="${escapeAttribute(description)}">`
+    : "";
+  const ogImageHtml = ogImage
+    ? `\n  <meta property="og:image" content="${escapeAttribute(absoluteUrl(ogImage))}">\n  <meta name="twitter:card" content="summary_large_image">\n  <meta name="twitter:image" content="${escapeAttribute(absoluteUrl(ogImage))}">`
     : "";
 
   return `<!doctype html>
@@ -231,7 +241,7 @@ function pageHtml({ title, description, body, stylesheetHref = "styles.css" }) {
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>${escapeHtml(title)}</title>
   <meta property="og:title" content="${escapeAttribute(title)}">
-  <meta name="twitter:title" content="${escapeAttribute(title)}">${descriptionHtml}
+  <meta name="twitter:title" content="${escapeAttribute(title)}">${descriptionHtml}${ogImageHtml}
   <link rel="stylesheet" href="${escapeAttribute(stylesheetHref)}">
 </head>
 <body>
@@ -275,6 +285,7 @@ function buildArticles() {
         fileName,
         href: `posts/${outputName}`,
         isPublished: metadata.published === true,
+        ogImage: metadata.ogImage,
         outputName,
         slug,
         title,
@@ -327,6 +338,7 @@ function build() {
     const html = pageHtml({
       title: article.title,
       description: article.description,
+      ogImage: article.ogImage,
       body: articleHtml(article),
       stylesheetHref: "../styles.css",
     });
