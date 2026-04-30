@@ -1,6 +1,6 @@
 ---
 date: 2026-04-28
-published: false
+published: true
 description: This post is about writing, encouragement, excuses, getting out of your own way, and a little bit of JavaScript.
 ogImage: /images/excuses/ryan-dm.png
 ---
