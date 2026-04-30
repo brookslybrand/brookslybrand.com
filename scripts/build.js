@@ -45,6 +45,7 @@ function renderMarkdown(markdown) {
   const html = [];
   let paragraph = [];
   let listItems = [];
+  let blockquote = [];
   let codeBlock = [];
   let inCodeBlock = false;
 
@@ -54,14 +55,42 @@ function renderMarkdown(markdown) {
     paragraph = [];
   }
 
+  function renderListItems(items, depth = 0, startIndex = 0) {
+    const rendered = ["<ul>"];
+    let index = startIndex;
+
+    while (index < items.length) {
+      const item = items[index];
+      if (item.depth < depth) break;
+
+      const currentDepth = item.depth;
+      let itemHtml = `<li>${renderInline(item.text)}`;
+      index += 1;
+
+      if (index < items.length && items[index].depth > currentDepth) {
+        const nested = renderListItems(items, items[index].depth, index);
+        itemHtml += `\n${nested.html}`;
+        index = nested.index;
+      }
+
+      itemHtml += "</li>";
+      rendered.push(itemHtml);
+    }
+
+    rendered.push("</ul>");
+    return { html: rendered.join("\n"), index };
+  }
+
   function flushList() {
     if (listItems.length === 0) return;
-    html.push("<ul>");
-    for (const item of listItems) {
-      html.push(`<li>${renderInline(item)}</li>`);
-    }
-    html.push("</ul>");
+    html.push(renderListItems(listItems).html);
     listItems = [];
+  }
+
+  function flushBlockquote() {
+    if (blockquote.length === 0) return;
+    html.push(`<blockquote>\n<p>${blockquote.map(renderInline).join("<br>\n")}</p>\n</blockquote>`);
+    blockquote = [];
   }
 
   for (const line of lines) {
@@ -73,6 +102,7 @@ function renderMarkdown(markdown) {
       } else {
         flushParagraph();
         flushList();
+        flushBlockquote();
         inCodeBlock = true;
       }
       continue;
@@ -86,12 +116,14 @@ function renderMarkdown(markdown) {
     if (line.trim() === "") {
       flushParagraph();
       flushList();
+      flushBlockquote();
       continue;
     }
 
     if (/^---+$/.test(line.trim())) {
       flushParagraph();
       flushList();
+      flushBlockquote();
       html.push("<hr>");
       continue;
     }
@@ -100,24 +132,39 @@ function renderMarkdown(markdown) {
     if (heading) {
       flushParagraph();
       flushList();
+      flushBlockquote();
       const level = heading[1].length;
       html.push(`<h${level}>${renderInline(heading[2])}</h${level}>`);
       continue;
     }
 
-    const listItem = line.match(/^[-*]\s+(.+)$/);
+    const blockquoteLine = line.match(/^>\s?(.*)$/);
+    if (blockquoteLine) {
+      flushParagraph();
+      flushList();
+      blockquote.push(blockquoteLine[1]);
+      continue;
+    }
+
+    const listItem = line.match(/^(\s*)[-*]\s+(.+)$/);
     if (listItem) {
       flushParagraph();
-      listItems.push(listItem[1]);
+      flushBlockquote();
+      listItems.push({
+        depth: Math.floor(listItem[1].replace(/\t/g, "  ").length / 2),
+        text: listItem[2],
+      });
       continue;
     }
 
     flushList();
+    flushBlockquote();
     paragraph.push(line.trim());
   }
 
   flushParagraph();
   flushList();
+  flushBlockquote();
 
   if (inCodeBlock) {
     html.push(`<pre><code>${escapeHtml(codeBlock.join("\n"))}</code></pre>`);

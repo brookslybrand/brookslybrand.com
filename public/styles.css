@@ -38,7 +38,7 @@ h2,
 h3 {
   font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display",
     "SF Pro Icons", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-weight: 600;
+  font-weight: 550;
   letter-spacing: -0.025em;
   color: #1d1d1f;
 }
@@ -46,24 +46,25 @@ h3 {
 h1 {
   max-width: 12ch;
   margin: 0 0 1.25rem;
-  font-size: clamp(3rem, 8vw, 5rem);
+  font-size: clamp(2.25rem, 6vw, 3.75rem);
   line-height: 1.05;
 }
 
 h2 {
   margin: 3.5rem 0 1rem;
-  font-size: clamp(2rem, 5vw, 3rem);
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
   line-height: 1.08349;
 }
 
 h3 {
   margin: 2.5rem 0 0.75rem;
-  font-size: 1.75rem;
+  font-size: 1.5rem;
   line-height: 1.14286;
 }
 
 p,
 ul,
+blockquote,
 pre {
   max-width: 42rem;
   font-size: 1.1875rem;
@@ -71,7 +72,8 @@ pre {
 }
 
 p,
-ul {
+ul,
+blockquote {
   color: #424245;
 }
 
@@ -79,10 +81,22 @@ p {
   margin: 1rem 0;
 }
 
+blockquote {
+  margin: 1.5rem 0;
+  padding-left: 1rem;
+  border-left: 3px solid #d2d2d7;
+}
+
+blockquote p {
+  margin: 0;
+  color: inherit;
+}
+
 img {
   display: block;
   max-width: 100%;
   height: auto;
+  box-shadow: 0 0.125rem 0.75rem rgb(0 0 0 / 8%);
 }
 
 ul {

@@ -68,7 +68,9 @@ So that's what I started with.
 
 My stack is [Just JavaScript™](https://github.com/brookslybrand/brookslybrand.com/blob/06a92869ba1202bc9a4e245757c2381e06d058f9/scripts/build.js) and some markdown files. I wanted to add an image to this post, so now it has an image.
 
-I'm sure I'll build more features. I'll just keep asking LLMs to stare deeply into their linear matrices so I can format quotes properly. Eventually it'll get heavy, and I can refactor it or adopt an off-the-shelf solution. Eventually I'll also make it look a little better. For posterity sake, here's what we've got
+I'm sure I'll build more features. I'll just keep asking LLMs to stare deeply into their linear matrices so I can format quotes properly. Eventually it'll get heavy, and I can refactor it or adopt an off-the-shelf solution. Eventually I'll also make it look a little better. For posterity sake, here's what we've got:
+
+![First version of the blog](/images/excuses/blog-mach-1.png)
 
 > lol it's the hilarious styles
 > -Ryan
@@ -87,6 +89,8 @@ There are a lot of things that suck about my website/blog
 I'll probably improve it over time, or maybe I won't. After all, all I'm trying to do is write more.
 
 ## The Lesson
+
+I remember reading a version of [Aesop's Fables](https://en.wikipedia.org/wiki/Aesop%27s_Fables) as a child, where at the end of each story it would explain the moral to you, instead of letting you sit with it and discover it for yourself. In honor of that tradition, I will explain the lesson (because again, this is for me):
 
 - Clarify what you actually want (for me, to write more)
 - Clarify the purpose (because it helps me think)
