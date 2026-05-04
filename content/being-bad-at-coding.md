@@ -1,6 +1,8 @@
 ---
 date: 2024-07-19
 published: true
+description: I think I'm getting worse at coding.
+ogImage: /images/og/being-bad-at-coding.png
 ---
 
 _(I wrote this on Jul 19, 2024. I made some minor edits on May 4, 2026 before sharing more broadly)_

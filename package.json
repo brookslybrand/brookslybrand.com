@@ -1,10 +1,13 @@
 {
   "scripts": {
     "build": "node scripts/build.js",
+    "og": "node scripts/og.js",
     "preview": "pnpm run build && serve dist",
     "new": "node scripts/new.js"
   },
   "devDependencies": {
+    "@resvg/resvg-js": "^2.6.2",
+    "satori": "^0.26.0",
     "serve": "^14.2.6"
   }
 }

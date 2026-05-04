@@ -26,7 +26,10 @@ function escapeAttribute(value) {
 function absoluteUrl(value) {
   if (/^[a-z][a-z\d+.-]*:/i.test(value)) return value;
   if (value.startsWith("//")) return `https:${value}`;
-  return new URL(value.startsWith("/") ? value : `/${value}`, siteUrl).toString();
+  return new URL(
+    value.startsWith("/") ? value : `/${value}`,
+    siteUrl,
+  ).toString();
 }
 
 function renderInline(markdown) {
@@ -35,6 +38,7 @@ function renderInline(markdown) {
   html = html.replace(/`([^`]+)`/g, "<code>$1</code>");
   html = html.replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>");
   html = html.replace(/\*([^*]+)\*/g, "<em>$1</em>");
+  html = html.replace(/(^|[^\w])_([^_\n]+)_($|[^\w])/g, "$1<em>$2</em>$3");
   html = html.replace(
     /!\[([^\]]*)\]\(([^)]+)\)/g,
     (_match, alt, src) => `<img src="${escapeAttribute(src)}" alt="${alt}">`,
@@ -96,14 +100,20 @@ function renderMarkdown(markdown) {
 
   function flushBlockquote() {
     if (blockquote.length === 0) return;
-    html.push(`<blockquote>\n<p>${blockquote.map(renderInline).join("<br>\n")}</p>\n</blockquote>`);
+    html.push(
+      `<blockquote>\n<p>${blockquote
+        .map(renderInline)
+        .join("<br>\n")}</p>\n</blockquote>`,
+    );
     blockquote = [];
   }
 
   for (const line of lines) {
     if (line.startsWith("```")) {
       if (inCodeBlock) {
-        html.push(`<pre><code>${escapeHtml(codeBlock.join("\n"))}</code></pre>`);
+        html.push(
+          `<pre><code>${escapeHtml(codeBlock.join("\n"))}</code></pre>`,
+        );
         codeBlock = [];
         inCodeBlock = false;
       } else {
@@ -224,14 +234,30 @@ function firstHeading(markdown) {
   return match ? match[1].trim() : null;
 }
 
-function pageHtml({ title, description, ogImage, body, stylesheetHref = "styles.css" }) {
+function pageHtml({
+  title,
+  description,
+  ogImage,
+  body,
+  stylesheetHref = "styles.css",
+}) {
   const header = renderMarkdown(readContentFile("_header.md"));
   const footer = renderMarkdown(readContentFile("_footer.md"));
   const descriptionHtml = description
-    ? `\n  <meta name="description" content="${escapeAttribute(description)}">\n  <meta property="og:description" content="${escapeAttribute(description)}">\n  <meta name="twitter:description" content="${escapeAttribute(description)}">`
+    ? `\n  <meta name="description" content="${escapeAttribute(
+        description,
+      )}">\n  <meta property="og:description" content="${escapeAttribute(
+        description,
+      )}">\n  <meta name="twitter:description" content="${escapeAttribute(
+        description,
+      )}">`
     : "";
   const ogImageHtml = ogImage
-    ? `\n  <meta property="og:image" content="${escapeAttribute(absoluteUrl(ogImage))}">\n  <meta name="twitter:card" content="summary_large_image">\n  <meta name="twitter:image" content="${escapeAttribute(absoluteUrl(ogImage))}">`
+    ? `\n  <meta property="og:image" content="${escapeAttribute(
+        absoluteUrl(ogImage),
+      )}">\n  <meta name="twitter:card" content="summary_large_image">\n  <meta name="twitter:image" content="${escapeAttribute(
+        absoluteUrl(ogImage),
+      )}">`
     : "";
 
   return `<!doctype html>
@@ -241,7 +267,9 @@ function pageHtml({ title, description, ogImage, body, stylesheetHref = "styles.
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>${escapeHtml(title)}</title>
   <meta property="og:title" content="${escapeAttribute(title)}">
-  <meta name="twitter:title" content="${escapeAttribute(title)}">${descriptionHtml}${ogImageHtml}
+  <meta name="twitter:title" content="${escapeAttribute(
+    title,
+  )}">${descriptionHtml}${ogImageHtml}
   <link rel="stylesheet" href="${escapeAttribute(stylesheetHref)}">
 </head>
 <body>
@@ -267,7 +295,9 @@ function indent(value, spaces) {
 function buildArticles() {
   const files = fs
     .readdirSync(contentDir)
-    .filter((fileName) => !fileName.startsWith("_") && articlePattern.test(fileName));
+    .filter(
+      (fileName) => !fileName.startsWith("_") && articlePattern.test(fileName),
+    );
 
   return files
     .map((fileName) => {
@@ -293,7 +323,8 @@ function buildArticles() {
       };
     })
     .sort((a, b) => {
-      if (a.date && b.date && a.date !== b.date) return b.date.localeCompare(a.date);
+      if (a.date && b.date && a.date !== b.date)
+        return b.date.localeCompare(a.date);
       if (a.date !== b.date) return a.date ? -1 : 1;
       return a.title.localeCompare(b.title);
     });
@@ -307,7 +338,11 @@ function articleListHtml(articles) {
   const items = articles
     .map(
       (article) =>
-        `<li>${article.date ? `<time datetime="${article.date}">${article.date}</time> ` : ""}<a href="${article.href}">${escapeHtml(article.title)}</a></li>`,
+        `<li>${
+          article.date
+            ? `<time datetime="${article.date}">${article.date}</time> `
+            : ""
+        }<a href="${article.href}">${escapeHtml(article.title)}</a></li>`,
     )
     .join("\n");
 
@@ -315,7 +350,9 @@ function articleListHtml(articles) {
 }
 
 function articleHtml(article) {
-  const dateHtml = article.date ? `<time datetime="${article.date}">${article.date}</time>\n` : "";
+  const dateHtml = article.date
+    ? `<time class="article-date" datetime="${article.date}">${article.date}</time>\n`
+    : "";
   return `${dateHtml}${article.html}`;
 }
 
@@ -347,10 +384,19 @@ function build() {
 
   const indexContent = renderMarkdown(readContentFile("_index.md"));
   const publishedArticles = articles.filter((article) => article.isPublished);
-  const indexBody = `${indexContent}\n<h2>Articles</h2>\n${articleListHtml(publishedArticles)}`;
-  fs.writeFileSync(path.join(distDir, "index.html"), pageHtml({ title: "Blog", body: indexBody }));
+  const indexBody = `${indexContent}\n<h2>Articles</h2>\n${articleListHtml(
+    publishedArticles,
+  )}`;
+  fs.writeFileSync(
+    path.join(distDir, "index.html"),
+    pageHtml({ title: "Brooks Blog", body: indexBody }),
+  );
 
-  console.log(`Built ${articles.length} article${articles.length === 1 ? "" : "s"} into dist/`);
+  console.log(
+    `Built ${articles.length} article${
+      articles.length === 1 ? "" : "s"
+    } into dist/`,
+  );
 }
 
 build();
