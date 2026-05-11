@@ -1,6 +1,7 @@
 ---
 date: 2024-05-23
 published: true
+ogImage: /images/og/getting-tuberculosis.png
 ---
 
 # Getting Tuberculosis

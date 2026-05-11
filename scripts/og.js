@@ -111,22 +111,29 @@ function firstHeading(markdown) {
   return match ? stripInlineMarkdown(match[1]) : null;
 }
 
+function stripBlockquoteMarker(line) {
+  return line.replace(/^>\s?/, "");
+}
+
 function excerptFromBody(markdown, title) {
   const lines = markdown.replace(/\r\n/g, "\n").split("\n");
   const paragraphs = [];
   let current = [];
+  let currentType = "paragraph";
   let hasSeenTitle = false;
   let inCodeBlock = false;
 
   function flush() {
     if (current.length === 0) return;
     const text = stripInlineMarkdown(current.join(" "));
+    const type = currentType;
     current = [];
+    currentType = "paragraph";
 
     if (!text) return;
     if (/^\(.+\)$/.test(text)) return;
     if (text === title) return;
-    paragraphs.push(text);
+    paragraphs.push(type === "quote" ? `"${text}"` : text);
   }
 
   for (const rawLine of lines) {
@@ -155,15 +162,30 @@ function excerptFromBody(markdown, title) {
 
     if (!hasSeenTitle && title) continue;
 
+    if (line.startsWith(">")) {
+      const quote = stripBlockquoteMarker(line);
+
+      if (currentType !== "quote") {
+        flush();
+        currentType = "quote";
+      }
+
+      if (quote) current.push(quote);
+      continue;
+    }
+
     if (
       line === "" ||
-      line.startsWith(">") ||
       line.startsWith("![") ||
       /^[-*]\s+/.test(line) ||
       /^\d+\.\s+/.test(line)
     ) {
       flush();
       continue;
+    }
+
+    if (currentType !== "paragraph") {
+      flush();
     }
 
     current.push(line);
