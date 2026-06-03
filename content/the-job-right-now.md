@@ -6,7 +6,7 @@ On the flip side, I've said before that [writing helps me think](./excuses), and
 
 ## Chill out, let people get there theirselves
 
-There's trick to this though: thinking for yourself doesn't mean "be a contrarian", it doesn't mean you have to have a new, and original take. The discourse kind of sucks right now, because _everyone_ is figuring this out at all at the same time. Some people have been using AI for programming longer, and so some of those people have been thinking about this longer. There's a temptation to downplay other people's "ah ha" moments because it's a "tired" take in your little sphere of the internet. Anyway, that's a more personal, insecurity-laden reason I haven't spent time writing about my career yet.
+There's a trick to this though: thinking for yourself doesn't mean "be a contrarian", it doesn't mean you have to have a new, and original take. The discourse kind of sucks right now, because _everyone_ is figuring this out at all at the same time. Some people have been using AI for programming longer, and so some of those people have been thinking about this longer. There's a temptation to downplay other people's "ah ha" moments because it's a "tired" take in your little sphere of the internet. Anyway, that's a more personal, insecurity-laden reason I haven't spent time writing about my career yet.
 
 I remember when I first started gaining some competence in my field. I was particularly focused on React, and hooks had just come out. I felt very superior because I knew all the hooks by heart, and I could implement and explain the proper (and more importantly, improper) way to implement a `useEffect`. I had this knowledge that at the time made me a pretty decent web developer within a React codebase. I even gave some little local meetup talks that I thought were pretty good.
 
@@ -31,7 +31,7 @@ But with AI for programming, it's different: there is no right or wrong. To spea
 
 ## I'm not having fun
 
-I oscillate through basically 3 modes
+I oscillate through basically 3 modes:
 1. I'm overwhelmed, I'm not having fun
 2. Holy heck, this is awesome, I've never been so productive or built something so cool
 3. This is alright
