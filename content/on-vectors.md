@@ -32,3 +32,5 @@ I think the industry is moving on from this thinking. It's time to get back to d
 It's time to get back to thinking about where we're going. I'm hardly the first to point this out. Building things was always a hard part, but never the most important part (we engineers want to think it is, because it's the part we do). What to build is probably the most important part. It's the drummer, keeping the beat to which all the musicians of engineering, design, marketing, etc. keep time to.
 
 As an engineer, you're still responsible for _what_ is built. You're responsible for getting to B. You can keep throwing magnitude all you want, but without direction you won't get to B. 
+
+Is this good enough?
