@@ -82,9 +82,9 @@ Either:
 
 Ah the web framework. Where does it start, where does it end? What's it's purpose? Do we even need them at all? After all, what was so bad about JQuery, and has anyone made the argument that we should just let the agent use JQuery since it's well represented in its training data?
 
-I'm old enough to remember the "framework wars" of the 2010s, but just barely. I got the tail end of it really. When I did my evaluations, it was React, Angular, and Vue. Those were the "frameworks" we talked about. Gatsby existed and was way overused. Next.js was pretty cool, but also pretty limited. For the most part, if you were in the React ecosystem, you just used create-react-app (CRA) and _maybe_ you ejected if you actually had someone on your team who thought SSR was valuable and wanted to set that up.
+I'm old enough to remember the "framework wars" of the 2010s, but just barely. I got the tail end of it really. When I did my evaluations, it was React, Angular, and Vue. Those were the "frameworks" we talked about. Gatsby existed and was way overused. Next.js was pretty cool, but also pretty limited. For the most part, if you were in the React ecosystem, you just used create-react-app (CRA) and _maybe_ you [ejected](https://create-react-app.dev/docs/available-scripts/#npm-run-eject) if you actually had someone on your team who thought SSR was valuable and wanted to set that up.
 
-React was solving a number of problems. Despite what [Mr. Rauch thinks](https://x.com/rauchg/status/2088757738037989755) (and ordinarily, he is pretty much on the money), React didn't "win" because it came with a component library that wraps a great style system and lower-level accessible components and utilities that you can own and morph to your own needs. ShadCN is awesome, don't get me wrong, but even with in the component-library/design system story it's the latest evolution in a long line of successors from Radix, to Reach UI, to Material UI, to Bootstrap (and many, many more that I'm skipping, forgetting, or unaware of).
+React was solving a number of problems. Despite what [Mr. Rauch thinks](https://x.com/rauchg/status/2088757738037989755) (and ordinarily, he is pretty much on the money), React didn't "win" because it came with a component library that wraps a great style system and lower-level accessible components and utilities that you can own and morph to your own needs. ShadCN is awesome, don't get me wrong. But even with in the component-library/design system story it's the latest evolution in a long line of successors from Radix, to Reach UI, to Material UI, to Bootstrap and many, many more that I'm skipping, forgetting, or unaware of.
 
 If you ask the React team why React won, or maybe why it's so great, they'd likely say "composition". I find it very difficult to encapsulate exactly what made React so special, but I think this is a big part of it. I didn't really understand what this meant for the early part of my career and React usage. I just knew that:
 - React was really easy to plug into an existing site
@@ -95,7 +95,7 @@ I would learn later that React also provided server-side rendering (SSR) out the
 
 This long but brief diversion of why React was good hardly does justice to the full history, and it certainly doesn't scratch the surface of other web frameworks and what made them unique. Despite React's predominance, plenty of other frameworks and meta-frameworks get millions of weekly downloads and are loved by many a developer. It also completely glosses over the popularity of non-JavaScript based frameworks such as Laravel and Ruby on Rails.
 
-It's difficult for me to answer the question: "what is the value of a web framework?" without considering why React was value able to me. React made it easier to build dynamic websites without ending up with spaghetti code, and spaghetti code was bad because long term it was costly to change and maintain.
+It's difficult for me to answer the question: "what is the value of a web framework?" without considering why React was valuable to me (CUT, MOVE?). React made it easier to build dynamic websites without ending up with spaghetti code, and spaghetti code was bad because long term it was costly to change and maintain.
 
 I think the value-add of a framework is pretty simple: **frameworks provide abstractions, structure, and constraints for building your website**. This isn't even really a unique property of frameworks, this is true for all libraries, modules, classes, and functions. Code is a series of abstractions that express meaning and intent to computers and anything else for which that code is valuable. Previously that was humans, and so we cared a lot about things like variable names. These days the level of detail we care about is shifting and resettling. Maybe we're on some infinite curve and we'll care less and less about the trees until we don't even care about the forest. Personally, I'm doubtful, but I could definitely be wrong.
 
@@ -148,12 +148,21 @@ UNFINISHED
 - talking about the shifting of hype cycles, and that's okay
 - talk about what I'm committing to
 
-I have been writing this blog post for a little over 3 weeks at this point
+I have been writing this blog post for [3 weeks at this point](https://x.com/BrooksLybrand/status/2092273347060969474). I've spent the last 3 years of my career working on open-source web frameworks. I like this work, and I'd like this to be what I work on for the indefinite future. Answering the question "do frameworks matter anymore" is incredibly important to me, because more than I love working on frameworks, I hate the idea of working on something that just doesn't matter.
 
-https://x.com/BrooksLybrand/status/2092273347060969474
+Through writing this piece and multiple conversations with peers in the industries, I feel pretty confident about a few things:
+- AI is absolutely reshaping how software is made, both individually and at scale.
+- Until proven otherwise, different people and approaches yield varying degrees of quality when it comes to results.
+- No one actually knows the long-term impact AI will have on the software development, let alone the world.
+- AI is currently where the full focus of the industry is.
 
-To me it's like asking "does transportation matter anymore" because everyone is "cars are here, horse-drawn carriages are out."
+I think **Framework Wars** of ~2013-2019. followed by the sequel **Framework Wars: The Rise of the Meta-Frameworks** ~2020-2024 are over. Clearly by putting that date of 2024, I believe they've been over for a little bit. People can stop being fatigued by JavaScript, and thank goodness because we all know [we're fatigued by the AI hype/doomer cycle](https://www.youtube.com/watch?v=iPUn1Fnfn0k).
+
+I entered and grew up in this industry as web frameworks, and particularly React, were seemingly taking over a large swath of the industry (I recall people shipping React to both the terminal and to fridges, no judgement, just nostalgia). Because these are the fires that forged me, this is easiest lens through which I can make some sense of how large communities of individuals, professionals, and appreciators of their craft respond a dominating market force that is incredibly cool and valuable while simultaneously sucks all the air out of the room for any other conversation.
+
+So I've accepted, or am accepting, that the people do not year from the framework they way they used to, and in many ways that's probably a really good thing. It got a little crazy there for a second, and I of course was very bought in.
+
+To me it's like asking "does transportation matter anymore" because everyone is saying "cars are here, horse-drawn carriages are out."
 
 While true, traditional programming is going through a resolution, but until agents are no longer programming, I find this nearly-a-cliché-heuristic still quite valuable: if it was good for humans, it's probably good for AI.
 
-I think **Framework Wars** ~2013-2019 is done, and it's sequel **Framework Wars: The Rise of the Meta-Frameworks** ~2020-2024 is also over. People can stop being fatigued by JavaScript, and thank goodness because we all know [we're fatigued by the AI hype/doomer cycle](https://www.youtube.com/watch?v=iPUn1Fnfn0k).
