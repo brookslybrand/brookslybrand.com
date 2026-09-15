@@ -185,4 +185,4 @@ Do new frameworks matter anymore? There's only one way to actually find out. Let
 
 ---
 
-_Thank you to [Alex Anderson](https://bsky.app/profile/ralexanderson.com), [Moishi Netzer](https://x.com/moishinetzer), and [Elijah F. Hopp](https://x.com/elijahfhopp) for reading an early draft of this post and providing valuable feedback 🙏._
+_Thank you to [Alex Anderson](https://bsky.app/profile/ralexanderson.com), [Moishi Netzer](https://x.com/moishinetzer), and [Elijah F. Hopp](https://x.com/elijahfhopp) for reading an early draft of this post and providing valuable feedback._ 🙏

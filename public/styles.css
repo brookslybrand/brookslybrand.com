@@ -1,149 +1,193 @@
 :root {
-  color-scheme: light;
-  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Icons",
-    "Helvetica Neue", Helvetica, Arial, sans-serif;
-  line-height: 1.47059;
-  color: #1d1d1f;
-  background: #fff;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
+    color-scheme: light;
+    font-family:
+        -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Icons",
+        "Helvetica Neue", Helvetica, Arial, sans-serif;
+    line-height: 1.47059;
+    color: #1d1d1f;
+    background: #fff;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
 }
 
 * {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 body {
-  margin: 0;
-  font-size: 17px;
+    margin: 0;
+    font-size: 16px;
 }
 
 a {
-  color: #06c;
-  text-decoration: none;
+    color: #06c;
+    text-decoration: none;
 }
 
 a:hover {
-  text-decoration: underline;
+    text-decoration: underline;
 }
 
 .site {
-  width: min(100% - 2rem, 61.25rem);
-  margin: 0 auto;
-  padding: 4.5rem 0;
+    width: min(100% - 2rem, 61.25rem);
+    margin: 0 auto;
+    padding: 4.5rem 0;
 }
 
 h1,
 h2,
 h3 {
-  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display",
-    "SF Pro Icons", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-weight: 550;
-  letter-spacing: -0.025em;
-  color: #1d1d1f;
+    font-family:
+        -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Icons",
+        "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 550;
+    letter-spacing: -0.025em;
+    color: #1d1d1f;
 }
 
 h1 {
-  max-width: 18ch;
-  margin: 1.5rem 0 1.75rem;
-  font-size: clamp(2.25rem, 6vw, 3.75rem);
-  line-height: 1.05;
+    max-width: 18ch;
+    margin: 1.5rem 0 1.75rem;
+    font-size: clamp(2.25rem, 6vw, 3.75rem);
+    line-height: 1.05;
 }
 
 h2 {
-  margin: 4.25rem 0 1rem;
-  font-size: clamp(1.75rem, 4vw, 2.5rem);
-  line-height: 1.08349;
+    margin: 3rem 0 1rem;
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    line-height: 1.08349;
 }
 
 h3 {
-  margin: 2.5rem 0 0.75rem;
-  font-size: 1.5rem;
-  line-height: 1.14286;
+    margin: 2rem 0 0.75rem;
+    font-size: 1.5rem;
+    line-height: 1.14286;
 }
 
 p,
 ul,
 blockquote,
 pre {
-  max-width: 42rem;
-  font-size: 1.1875rem;
-  line-height: 1.52632;
+    max-width: 42rem;
+    font-size: 1.125rem;
+    line-height: 1.52632;
 }
 
 p,
 ul,
 blockquote {
-  color: #424245;
+    color: #424245;
 }
 
 p {
-  margin: 1rem 0;
+    margin: 1.5rem 0;
 }
 
 blockquote {
-  margin: 1.5rem 0;
-  padding-left: 1rem;
-  border-left: 3px solid #d2d2d7;
+    margin: 1.5rem 0;
+    padding-left: 1rem;
+    border-left: 3px solid #d2d2d7;
 }
 
 blockquote p {
-  margin: 0;
-  color: inherit;
+    margin: 0;
+    color: inherit;
 }
 
 img {
-  display: block;
-  max-width: 100%;
-  height: auto;
-  box-shadow: 0 0.125rem 0.75rem rgb(0 0 0 / 8%);
+    display: block;
+    max-width: 100%;
+    height: auto;
+    box-shadow: 0 0.125rem 0.75rem rgb(0 0 0 / 8%);
 }
 
 ul {
-  padding-left: 1.25rem;
+    padding-left: 1.25rem;
 }
 
 li + li {
-  margin-top: 0.35rem;
+    margin-top: 0.35rem;
 }
 
 code {
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-  font-size: 0.88em;
+    font-family:
+        ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    font-size: 0.88em;
 }
 
 pre {
-  overflow-x: auto;
-  padding: 1rem 1.25rem;
-  border-radius: 1.125rem;
-  background: #f5f5f7;
-  color: #1d1d1f;
+    overflow-x: auto;
+    padding: 1rem 1.25rem;
+    border-radius: 1.125rem;
+    background: #f5f5f7;
+    color: #1d1d1f;
 }
 
 hr {
-  border: 0;
-  border-top: 1px solid #d2d2d7;
-  margin: 4rem 0 1.5rem;
+    border: 0;
+    border-top: 1px solid #d2d2d7;
+    margin: 4rem 0 1.5rem;
 }
 
 .article-list {
-  padding-left: 0;
-  list-style: none;
+    padding-left: 0;
+    list-style: none;
 }
 
 .article-list li + li {
-  margin-top: 0.75rem;
+    margin-top: 0.75rem;
 }
 
 time {
-  display: inline-block;
-  min-width: 6.8rem;
-  color: #6e6e73;
-  font-size: 0.94118rem;
-  font-variant-numeric: tabular-nums;
+    display: inline-block;
+    min-width: 6.8rem;
+    color: #6e6e73;
+    font-size: 0.94118rem;
+    font-variant-numeric: tabular-nums;
 }
 
 .article-date {
-  display: block;
-  margin: 1.25rem 0 0.75rem;
+    display: block;
+    margin: 1.25rem 0 0.75rem;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        color-scheme: dark;
+        color: #f5f5f7;
+        background: #1c1c1e;
+    }
+
+    a {
+        color: #2997ff;
+    }
+
+    h1,
+    h2,
+    h3 {
+        color: #f5f5f7;
+    }
+
+    p,
+    ul,
+    blockquote {
+        color: #d1d1d6;
+    }
+
+    blockquote {
+        border-left-color: #48484a;
+    }
+
+    pre {
+        background: #2c2c2e;
+        color: #f5f5f7;
+    }
+
+    hr {
+        border-top-color: #48484a;
+    }
+
+    time {
+        color: #98989d;
+    }
 }
