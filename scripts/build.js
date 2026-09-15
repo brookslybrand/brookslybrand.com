@@ -307,7 +307,8 @@ function buildArticles() {
 
       const date = metadata.date || fileDate;
       const title = firstHeading(body) || titleFromSlug(slug);
-      const outputName = `${path.basename(fileName, ".md")}.html`;
+      const outputSlug = path.basename(fileName, ".md").replace(/[?]/g, "");
+      const outputName = `${outputSlug}.html`;
 
       return {
         date,

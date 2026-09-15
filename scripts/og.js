@@ -315,9 +315,10 @@ async function main() {
   const slug = path.basename(contentPath, ".md");
   const title = firstHeading(body) || metadata.title || titleFromSlug(slug);
   const excerpt = excerptFromBody(body, title);
+  const outputSlug = slug.replace(/[?]/g, "");
   const outputPath = explicitOutput
     ? path.resolve(rootDir, explicitOutput)
-    : path.join(outputDir, `${slug}.png`);
+    : path.join(outputDir, `${outputSlug}.png`);
   const publicImagePath = `/${path.relative(publicDir, outputPath).split(path.sep).join("/")}`;
 
   fs.mkdirSync(path.dirname(outputPath), { recursive: true });
@@ -381,7 +382,7 @@ async function main() {
                 lineHeight: 1.35,
                 letterSpacing: "-0.012em",
               },
-              children: excerpt.map((paragraph) => ({
+              children: excerpt.slice(0, 2).map((paragraph) => ({
                 type: "div",
                 props: { children: clampText(paragraph, 150) },
               })),

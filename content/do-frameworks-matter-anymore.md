@@ -1,6 +1,7 @@
 ---
 date: 2026-09-15
 published: true
+ogImage: /images/og/do-frameworks-matter-anymore.png
 ---
 
 # Do Frameworks Matter Anymore?
