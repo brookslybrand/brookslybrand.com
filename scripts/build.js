@@ -32,7 +32,7 @@ function absoluteUrl(value) {
   ).toString();
 }
 
-function renderInline(markdown) {
+function renderInline(markdown, resolveHref = (href) => href) {
   let html = escapeHtml(markdown);
 
   html = html.replace(/`([^`]+)`/g, "<code>$1</code>");
@@ -45,13 +45,13 @@ function renderInline(markdown) {
   );
   html = html.replace(
     /\[([^\]]+)\]\(([^)]+)\)/g,
-    (_match, label, href) => `<a href="${escapeAttribute(href)}">${label}</a>`,
+    (_match, label, href) => `<a href="${escapeAttribute(resolveHref(href))}">${label}</a>`,
   );
 
   return html;
 }
 
-function renderMarkdown(markdown) {
+function renderMarkdown(markdown, resolveHref = (href) => href) {
   const lines = markdown.replace(/\r\n/g, "\n").split("\n");
   const html = [];
   let paragraph = [];
@@ -62,7 +62,7 @@ function renderMarkdown(markdown) {
 
   function flushParagraph() {
     if (paragraph.length === 0) return;
-    html.push(`<p>${renderInline(paragraph.join(" "))}</p>`);
+    html.push(`<p>${renderInline(paragraph.join(" "), resolveHref)}</p>`);
     paragraph = [];
   }
 
@@ -75,7 +75,7 @@ function renderMarkdown(markdown) {
       if (item.depth < depth) break;
 
       const currentDepth = item.depth;
-      let itemHtml = `<li>${renderInline(item.text)}`;
+      let itemHtml = `<li>${renderInline(item.text, resolveHref)}`;
       index += 1;
 
       if (index < items.length && items[index].depth > currentDepth) {
@@ -102,7 +102,7 @@ function renderMarkdown(markdown) {
     if (blockquote.length === 0) return;
     html.push(
       `<blockquote>\n<p>${blockquote
-        .map(renderInline)
+        .map((line) => renderInline(line, resolveHref))
         .join("<br>\n")}</p>\n</blockquote>`,
     );
     blockquote = [];
@@ -151,7 +151,7 @@ function renderMarkdown(markdown) {
       flushList();
       flushBlockquote();
       const level = heading[1].length;
-      html.push(`<h${level}>${renderInline(heading[2])}</h${level}>`);
+      html.push(`<h${level}>${renderInline(heading[2], resolveHref)}</h${level}>`);
       continue;
     }
 
@@ -299,7 +299,7 @@ function buildArticles() {
       (fileName) => !fileName.startsWith("_") && articlePattern.test(fileName),
     );
 
-  return files
+  const articles = files
     .map((fileName) => {
       const [, fileDate, slug] = fileName.match(articlePattern);
       const markdown = fs.readFileSync(path.join(contentDir, fileName), "utf8");
@@ -308,27 +308,55 @@ function buildArticles() {
       const date = metadata.date || fileDate;
       const title = firstHeading(body) || titleFromSlug(slug);
       const outputSlug = path.basename(fileName, ".md").replace(/[?]/g, "");
-      const outputName = `${outputSlug}.html`;
 
       return {
+        body,
         date,
         description: metadata.description,
         fileName,
-        href: `posts/${outputName}`,
+        href: `posts/${outputSlug}/`,
         isPublished: metadata.published === true,
         ogImage: metadata.ogImage,
-        outputName,
+        outputName: outputSlug,
         slug,
         title,
-        html: renderMarkdown(body),
       };
-    })
+    });
+
+  const articleRoutes = new Map();
+  for (const article of articles) {
+    articleRoutes.set(normalizeArticleSlug(article.slug), article.outputName);
+    articleRoutes.set(normalizeArticleSlug(article.outputName), article.outputName);
+  }
+
+  return articles
+    .map(({ body, ...article }) => ({
+      ...article,
+      html: renderMarkdown(body, (href) => resolveArticleHref(href, articleRoutes)),
+    }))
     .sort((a, b) => {
       if (a.date && b.date && a.date !== b.date)
         return b.date.localeCompare(a.date);
       if (a.date !== b.date) return a.date ? -1 : 1;
       return a.title.localeCompare(b.title);
     });
+}
+
+function normalizeArticleSlug(value) {
+  return value
+    .replace(/^\.\//, "")
+    .replace(/\/$/, "")
+    .replace(/\.html$/, "")
+    .replace(/\.md$/, "")
+    .replace(/[?]/g, "");
+}
+
+function resolveArticleHref(href, articleRoutes) {
+  const match = href.match(/^\.\/([^/?#]+)([?#].*)?$/);
+  if (!match) return href;
+
+  const outputSlug = articleRoutes.get(normalizeArticleSlug(match[1]));
+  return outputSlug ? `/posts/${outputSlug}/${match[2] || ""}` : href;
 }
 
 function articleListHtml(articles) {
@@ -357,6 +385,26 @@ function articleHtml(article) {
   return `${dateHtml}${article.html}`;
 }
 
+function legacyArticleRedirectHtml(article) {
+  const destination = `${article.outputName}/`;
+  return `<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="refresh" content="0; url=${destination}">
+  <meta name="robots" content="noindex">
+  <link rel="canonical" href="${destination}">
+  <title>${escapeHtml(article.title)}</title>
+</head>
+<body>
+  <p>This article moved to <a href="${destination}">${escapeHtml(
+    destination,
+  )}</a>.</p>
+</body>
+</html>
+`;
+}
+
 function copyPublicAssets() {
   if (!fs.existsSync(publicDir)) return;
   fs.cpSync(publicDir, distDir, { recursive: true });
@@ -378,9 +426,15 @@ function build() {
       description: article.description,
       ogImage: article.ogImage,
       body: articleHtml(article),
-      stylesheetHref: "../styles.css",
+      stylesheetHref: "../../styles.css",
     });
-    fs.writeFileSync(path.join(postsDir, article.outputName), html);
+    const articleDir = path.join(postsDir, article.outputName);
+    fs.mkdirSync(articleDir, { recursive: true });
+    fs.writeFileSync(path.join(articleDir, "index.html"), html);
+    fs.writeFileSync(
+      path.join(postsDir, `${article.outputName}.html`),
+      legacyArticleRedirectHtml(article),
+    );
   }
 
   const indexContent = renderMarkdown(readContentFile("_index.md"));
