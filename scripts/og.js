@@ -9,42 +9,55 @@ const rootDir = path.resolve(__dirname, "..");
 const contentDir = path.join(rootDir, "content");
 const publicDir = path.join(rootDir, "public");
 const outputDir = path.join(publicDir, "images", "og");
+const faceImagePath = path.join(__dirname, "assets", "brooks-lybrand.jpeg");
 const width = 1200;
 const height = 630;
+const fontFamily = "Arial";
+const bodyFontFamily = "SF Pro Text, Helvetica Neue, Arial";
+const headingFontFamily = "SF Pro Display, Helvetica Neue, Arial";
+const colors = {
+  background: "#1c1c1e",
+  primary: "#f5f5f7",
+  secondary: "#d1d1d6",
+  muted: "#98989d",
+};
 
+// Satori needs a concrete font file. Arial is the final shared fallback in
+// the site's system-font stack, and one logical family keeps the generated
+// title and metadata consistent across platform-specific candidates.
 const fontCandidates = [
   {
-    name: "Arial",
+    name: fontFamily,
     path: "/System/Library/Fonts/Supplemental/Arial Bold.ttf",
     weight: 700,
     style: "normal",
   },
   {
-    name: "Arial",
+    name: fontFamily,
     path: "/System/Library/Fonts/Supplemental/Arial.ttf",
     weight: 400,
     style: "normal",
   },
   {
-    name: "DejaVu Sans",
+    name: fontFamily,
     path: "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf",
     weight: 700,
     style: "normal",
   },
   {
-    name: "DejaVu Sans",
+    name: fontFamily,
     path: "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf",
     weight: 400,
     style: "normal",
   },
   {
-    name: "Liberation Sans",
+    name: fontFamily,
     path: "/usr/share/fonts/truetype/liberation/LiberationSans-Bold.ttf",
     weight: 700,
     style: "normal",
   },
   {
-    name: "Liberation Sans",
+    name: fontFamily,
     path: "/usr/share/fonts/truetype/liberation/LiberationSans-Regular.ttf",
     weight: 400,
     style: "normal",
@@ -111,95 +124,11 @@ function firstHeading(markdown) {
   return match ? stripInlineMarkdown(match[1]) : null;
 }
 
-function stripBlockquoteMarker(line) {
-  return line.replace(/^>\s?/, "");
-}
-
-function excerptFromBody(markdown, title) {
-  const lines = markdown.replace(/\r\n/g, "\n").split("\n");
-  const paragraphs = [];
-  let current = [];
-  let currentType = "paragraph";
-  let hasSeenTitle = false;
-  let inCodeBlock = false;
-
-  function flush() {
-    if (current.length === 0) return;
-    const text = stripInlineMarkdown(current.join(" "));
-    const type = currentType;
-    current = [];
-    currentType = "paragraph";
-
-    if (!text) return;
-    if (/^\(.+\)$/.test(text)) return;
-    if (text === title) return;
-    paragraphs.push(type === "quote" ? `"${text}"` : text);
-  }
-
-  for (const rawLine of lines) {
-    const line = rawLine.trim();
-
-    if (line.startsWith("```")) {
-      inCodeBlock = !inCodeBlock;
-      flush();
-      continue;
-    }
-
-    if (inCodeBlock) continue;
-
-    const heading = line.match(/^(#{1,6})\s+(.+)$/);
-    if (heading) {
-      flush();
-
-      if (heading[1] === "#") {
-        hasSeenTitle = true;
-        continue;
-      }
-
-      if (hasSeenTitle && paragraphs.length > 0) break;
-      continue;
-    }
-
-    if (!hasSeenTitle && title) continue;
-
-    if (line.startsWith(">")) {
-      const quote = stripBlockquoteMarker(line);
-
-      if (currentType !== "quote") {
-        flush();
-        currentType = "quote";
-      }
-
-      if (quote) current.push(quote);
-      continue;
-    }
-
-    if (
-      line === "" ||
-      line.startsWith("![") ||
-      /^[-*]\s+/.test(line) ||
-      /^\d+\.\s+/.test(line)
-    ) {
-      flush();
-      continue;
-    }
-
-    if (currentType !== "paragraph") {
-      flush();
-    }
-
-    current.push(line);
-    if (paragraphs.length >= 4) break;
-  }
-
-  flush();
-  return paragraphs.slice(0, 4);
-}
-
-function clampText(value, maxLength) {
-  if (value.length <= maxLength) return value;
-  const trimmed = value.slice(0, maxLength - 1);
-  return `${trimmed.slice(0, Math.max(0, trimmed.lastIndexOf(" ")))}...`;
+function titleFontSize(title) {
+  if (title.length > 58) return 58;
+  if (title.length > 42) return 68;
+  if (title.length > 28) return 78;
+  return 90;
 }
 
 function loadFonts() {
@@ -230,6 +159,26 @@ function getArgValue(args, name) {
   const index = args.indexOf(name);
   if (index === -1) return null;
   return args[index + 1] || null;
+}
+
+function imageDataUri(filePath) {
+  const mimeTypes = {
+    ".jpeg": "image/jpeg",
+    ".jpg": "image/jpeg",
+    ".png": "image/png",
+    ".webp": "image/webp",
+  };
+  const mimeType = mimeTypes[path.extname(filePath).toLowerCase()];
+
+  if (!mimeType) {
+    throw new Error(`Unsupported image type: ${filePath}`);
+  }
+
+  if (!fs.existsSync(filePath)) {
+    throw new Error(`Could not find face image: ${filePath}`);
+  }
+
+  return `data:${mimeType};base64,${fs.readFileSync(filePath).toString("base64")}`;
 }
 
 function updateFrontmatter(filePath, markdown, publicImagePath) {
@@ -314,12 +263,12 @@ async function main() {
   const { metadata, body } = parseFrontmatter(markdown);
   const slug = path.basename(contentPath, ".md");
   const title = firstHeading(body) || metadata.title || titleFromSlug(slug);
-  const excerpt = excerptFromBody(body, title);
   const outputSlug = slug.replace(/[?]/g, "");
   const outputPath = explicitOutput
     ? path.resolve(rootDir, explicitOutput)
     : path.join(outputDir, `${outputSlug}.png`);
   const publicImagePath = `/${path.relative(publicDir, outputPath).split(path.sep).join("/")}`;
+  const faceImage = imageDataUri(faceImagePath);
 
   fs.mkdirSync(path.dirname(outputPath), { recursive: true });
 
@@ -332,10 +281,11 @@ async function main() {
           height,
           display: "flex",
           flexDirection: "column",
-          background: "#fff",
-          color: "#1d1d1f",
-          padding: "54px 72px 58px",
-          fontFamily: "SF Pro Text, Helvetica Neue, Arial",
+          justifyContent: "space-between",
+          backgroundColor: colors.background,
+          color: colors.primary,
+          padding: "58px 72px 52px",
+          fontFamily: bodyFontFamily,
         },
         children: [
           metadata.date
@@ -343,11 +293,10 @@ async function main() {
                 type: "div",
                 props: {
                   style: {
-                    color: "#6e6e73",
-                    fontSize: 25,
+                    color: colors.muted,
+                    fontSize: 24,
                     lineHeight: 1.2,
-                    letterSpacing: 1,
-                    marginBottom: 42,
+                    letterSpacing: "0.02em",
                   },
                   children: metadata.date,
                 },
@@ -357,14 +306,15 @@ async function main() {
             type: "div",
             props: {
               style: {
-                maxWidth: 980,
-                color: "#1d1d1f",
-                fontFamily: "SF Pro Display, Helvetica Neue, Arial",
-                fontSize: title.length > 44 ? 78 : title.length > 30 ? 88 : 96,
+                maxWidth: 1040,
+                color: colors.primary,
+                fontFamily: headingFontFamily,
+                fontSize: titleFontSize(title),
                 fontWeight: 700,
-                letterSpacing: "-0.045em",
-                lineHeight: 0.98,
-                marginBottom: 44,
+                letterSpacing: "-0.025em",
+                lineHeight: 1.02,
+                marginTop: 28,
+                marginBottom: 28,
               },
               children: title,
             },
@@ -373,19 +323,58 @@ async function main() {
             type: "div",
             props: {
               style: {
-                maxWidth: 980,
+                width: 220,
                 display: "flex",
                 flexDirection: "column",
-                gap: 20,
-                color: "#424245",
-                fontSize: 32,
-                lineHeight: 1.35,
-                letterSpacing: "-0.012em",
+                alignItems: "flex-start",
+                marginTop: 28,
               },
-              children: excerpt.slice(0, 2).map((paragraph) => ({
-                type: "div",
-                props: { children: clampText(paragraph, 150) },
-              })),
+              children: [
+                {
+                  type: "div",
+                  props: {
+                    style: {
+                      width: 128,
+                      height: 128,
+                      display: "flex",
+                      position: "relative",
+                      flexShrink: 0,
+                      overflow: "hidden",
+                      borderRadius: 64,
+                    },
+                    children: {
+                      type: "img",
+                      props: {
+                        src: faceImage,
+                        width: 260,
+                        height: 243,
+                        style: {
+                          width: 260,
+                          height: 243,
+                          position: "absolute",
+                          left: -71,
+                          top: -11,
+                        },
+                      },
+                    },
+                  },
+                },
+                {
+                  type: "div",
+                  props: {
+                    style: {
+                      width: 220,
+                      color: colors.secondary,
+                      fontSize: 24,
+                      fontWeight: 700,
+                      lineHeight: 1.2,
+                      marginTop: 12,
+                      textAlign: "left",
+                    },
+                    children: "Brooks Lybrand",
+                  },
+                },
+              ],
             },
           },
         ].filter(Boolean),
