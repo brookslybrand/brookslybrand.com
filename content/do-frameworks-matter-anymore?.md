@@ -2,6 +2,7 @@
 date: 2026-09-14
 published: false
 ---
+
 # Do Frameworks Matter Anymore?
 
 I'm not trying to be facetious. I want to really consider whether or not, in 2026, in the age of vibe coding, agentic-programming, loop or graph or whatever diagrammatic metaphor-based engineering is most popular, does it matter what web framework you use? More importantly (to me and my particular interests), and at the risk of [Betteridge-ing myself](https://en.wikipedia.org/wiki/Betteridge%27s_law_of_headlines): should we make new frameworks?
@@ -19,6 +20,7 @@ In this time of great disruption we get the opportunity to rethink best practice
 One of the most reassuring rules-of-the-universe we are getting a weekly lesson in at this point is: nobody knows the future.
 
 Of course people will still predict the future. We predict for a number of reasons:
+
 1. Being right about the future is fun, it makes you feel smart.
 2. Being right about the future, when a lot of people are wrong (or non-predicting), usually gives you the opportunity to make a lot of money.
 3. Being right about the future might let you have some say in that future, be it by coining terms, pushing forward ideas or methods applicable in the future, or building a company that becomes a dominate force in that future.
@@ -26,6 +28,7 @@ Of course people will still predict the future. We predict for a number of reaso
 So essentially ego, money, or power, or more likely all 3.
 
 None of this is wrong outright. This isn't an indictment on trying to predict the future. I don't even know if we humans can _really_ help predicting the future if we wanted to. We do it in small ways all the time:
+
 - Looks like it might rain, better bring an umbrella.
 - I don't know if there will be much food at this party, better eat a snack now.
 - I think I will be happy spending my life with this person, I should marry them.
@@ -38,7 +41,7 @@ So as I am considering and also trying to predict (and make) the future, it's hu
 
 > Imagine there's no React
 > It's easy if you try
-> No Svelte below us*
+> No Svelte below us\*
 > Above us, only bi(nary)
 > Imagine all the people
 > Prompting for today
@@ -48,12 +51,13 @@ So as I am considering and also trying to predict (and make) the future, it's hu
 So let's return to the argument, and spell it out a bit more. This is the conventional wisdom I am hearing right now:
 
 > Since the models got good (circa Winter 25-26) for agentic programming, I care less and less about the code (and you should too). This is particularly true with any frontend browser code, because it's all largely presentational, therefore if it looks good, it is good.
-> 
+>
 > That being the case, and given that React is already the most dominant of UI frameworks, with a very popular metaframework Next.js (not to mention some other good choices like React Router and Tanstack Start), there's really no need or value in trying anything else out. Plus, because there is vastly more React code out there in the wild, that means the models are trained more heavily on React, and therefore better (or at least more comfortable) with React. The React singularity has already happened, accept it.
 
 Obviously (I hope) I am now being a bit facetious. The argument is still worth considering, mostly because I see people [cargo culting](TODO: insert my tweet) this opinion and React along with it into their vibe coded apps. There are however some much more serious folks, such as the Cursor team, who do seem to be convinced that in the age of agentic programming [using React is an advantage](source).
 
 I'm tempted to dig into each of these claims:
+
 - You don't need to worry about frontend code
 - Models are best with React because of their training data
 - Models would be bad with a new framework because of lack of training data
@@ -69,12 +73,13 @@ React no longer has to be one's personality. Disclaimer: I say this as someone w
 Let me pitch the argument differently:
 
 > Since the models got good (circa Winter 25-26) for agentic programming, it's easier than ever to build a beautiful and interactive website without having to worry about what we previously called DX (Developer Experience). My agent doesn't care about things like file-based routing, and why should I bother it with properly setting up a useEffect?
-> 
-> Plus, models are really well trained on JavaScript, HTML, and CSS (sort of), there's really no need or value to adding any more layers of complexity. 
+>
+> Plus, models are really well trained on JavaScript, HTML, and CSS (sort of), there's really no need or value to adding any more layers of complexity.
 
 I think there are some logical leaps and mistakes in that sentiment, but no more than in the first, widely more accepted one.
 
 Either:
+
 - Framework do not matter, in which case you have no reason to use React
 - You would likely still be advantaged by using React, in which case Frameworks do matter
 
@@ -87,6 +92,7 @@ I'm old enough to remember the "framework wars" of the 2010s, but just barely. I
 React was solving a number of problems. Despite what [Mr. Rauch thinks](https://x.com/rauchg/status/2088757738037989755) (and ordinarily, he is pretty much on the money), React didn't "win" because it came with a component library that wraps a great style system and lower-level accessible components and utilities that you can own and morph to your own needs. ShadCN is awesome, don't get me wrong. But even with in the component-library/design system story it's the latest evolution in a long line of successors from Radix, to Reach UI, to Material UI, to Bootstrap and many, many more that I'm skipping, forgetting, or unaware of.
 
 If you ask the React team why React won, or maybe why it's so great, they'd likely say "composition". I find it very difficult to encapsulate exactly what made React so special, but I think this is a big part of it. I didn't really understand what this meant for the early part of my career and React usage. I just knew that:
+
 - React was really easy to plug into an existing site
 - React had a really nice way to encapsulate logic and markup into contained and sometimes reusable components
 - React had a robust and constantly growing ecosystem of libraries that helped fill in additional pieces I needed: routing, styling, head/meta tag management, etc.
@@ -143,26 +149,39 @@ And finally constraints. I want it to be so clear how to do the right thing the 
 
 ## So do frameworks matter anymore?
 
-UNFINISHED
-- talk about how I've been reflecting on this, soul-searching, conviction that it still matters even if it's not where the full force of the industry is
-- talking about the shifting of hype cycles, and that's okay
-- talk about what I'm committing to
-
-I have been writing this blog post for [3 weeks at this point](https://x.com/BrooksLybrand/status/2092273347060969474). I've spent the last 3 years of my career working on open-source web frameworks. I like this work, and I'd like this to be what I work on for the indefinite future. Answering the question "do frameworks matter anymore" is incredibly important to me, because more than I love working on frameworks, I hate the idea of working on something that just doesn't matter.
+I have been writing this blog post for [3 weeks at this point](https://x.com/BrooksLybrand/status/2092273347060969474). I've spent the last 3 years of my career working on open-source web frameworks. I like this work, and I'd like this to be what I work on for the indefinite future. Answering the question "do frameworks matter anymore" is incredibly important to me, because more than I love working on frameworks, I hate the idea of working on something that doesn't matter.
 
 Through writing this piece and multiple conversations with peers in the industries, I feel pretty confident about a few things:
+
 - AI is absolutely reshaping how software is made, both individually and at scale.
 - Until proven otherwise, different people and approaches yield varying degrees of quality when it comes to results.
-- No one actually knows the long-term impact AI will have on the software development, let alone the world.
+- No one actually knows the long-term impact AI will have on software development, let alone the world.
 - AI is currently where the full focus of the industry is.
 
 I think **Framework Wars** of ~2013-2019. followed by the sequel **Framework Wars: The Rise of the Meta-Frameworks** ~2020-2024 are over. Clearly by putting that date of 2024, I believe they've been over for a little bit. People can stop being fatigued by JavaScript, and thank goodness because we all know [we're fatigued by the AI hype/doomer cycle](https://www.youtube.com/watch?v=iPUn1Fnfn0k).
 
-I entered and grew up in this industry as web frameworks, and particularly React, were seemingly taking over a large swath of the industry (I recall people shipping React to both the terminal and to fridges, no judgement, just nostalgia). Because these are the fires that forged me, this is easiest lens through which I can make some sense of how large communities of individuals, professionals, and appreciators of their craft respond a dominating market force that is incredibly cool and valuable while simultaneously sucks all the air out of the room for any other conversation.
+I entered and grew up in this industry when web frameworks, and particularly React, were taking off and taking over a large swath of the industry (I recall people shipping React to both the terminal and to fridges, no judgement, just nostalgia). Because these are the fires that forged me, this is easiest lens through which I can make some sense of how large communities of individuals, professionals, and appreciators of their craft respond to a dominating market force that is incredibly cool and valuable. while simultaneously sucks all the air out of the room for any other conversation.
 
-So I've accepted, or am accepting, that the people do not year from the framework they way they used to, and in many ways that's probably a really good thing. It got a little crazy there for a second, and I of course was very bought in.
+So I've accepted, or am accepting, that the people do not yearn for the framework the way they used to, and in many ways that's probably a really good thing. It got a little crazy there for a second, and I, of course, was very bought in.
 
-To me it's like asking "does transportation matter anymore" because everyone is saying "cars are here, horse-drawn carriages are out."
+But something doesn't have to be the center of the hype cycle to be important or useful. There wasn't a whole lot of talk about the performance of `git` or finding an alternative to GitHub until swaths of OpenClaws and other agents on the loose stress tested the whole system and identified new bottlenecks. Technological development is dynamic, and new tools, ideas, patterns, and libraries beget even more of the same. Instead of sitting around moping about how people don't want to fight on Twitter about Next.js vs Remix anymore, I instead want to actually take part in building what I think I and other people could use.
 
-While true, traditional programming is going through a resolution, but until agents are no longer programming, I find this nearly-a-cliché-heuristic still quite valuable: if it was good for humans, it's probably good for AI.
+So again: do frameworks matter anymore? To me it's like asking "does transportation matter anymore" because everyone is saying "cars are here, horse-drawn carriages are out." Let me clarify my "yes" by summarizing my points so far:
 
+- The industry seems to think so, otherwise why use React?
+- If you don't use a framework, your agent will make a framework, so you're using one whether you like it or not.
+- Frameworks provide abstractions, structure, and constraints for building your website. These are good when shaping software with an agent. Using a well-thought out, open-source, battle tested and documented one likely has benefits over the homegrown one your model created (again, why people are sticking with React)
+
+As I sit here and lay out the summary of my thoughts so far, I recognize that it may look like I'm fighting a straw man. "Of course people think Frameworks matter and help your agent, that's just already a solved problem with React and Next.js (or any of the other existing frameworks that are good enough)."
+
+Fair enough. I guess the question is: **Do new new frameworks matter anymore?**
+
+I think we're in a sad place in human and technological development if we think all problems are solved. That kind of decadence is not for me. To me, if something is good then you can probably make it better. Maybe the existing landscape is "good enough", and that's fine if it is for you, but it's not for me.
+
+I want a JavaScript framework that is full-stack, actually. Maybe we'll never get there, prior attempts did not take off (👋 Meteor, we all loved you). So long as I (or my agent) has to cobble together a bunch of packages to make a full-stack application complete from database to styling, animations, and accessible components, then there's room for improvement.
+
+I want it to be built on web standards and APIs, so that it speaks the language of the web, not the language of Node.js or just one JavaScript runtime. I want it to be a framework that feels universal and like an obvious extension of the platform it's built for, not an esoteric, PhD candidate's research project.
+
+I also want a framework that AI can work with easily, and that results in code I can reason about. I don't want the end result to be a mess I don't understand. I'm not building the car, but damnit I want to open the hood and actually know what I'm looking at. I have yet to see a good, empirical way actually build a language/framework "for agents". So far my taste (which just means my subjective, biased experience working with the model) matters so much more to me than any benchmark, or analysis of how many tokens were used to make a TODO app. I'm not saying we shouldn't try, I'm saying the difficulty of creating a definitive, objective measure of which framework is best for agents is evidence enough to me that there is room to keep improving.
+
+Do new new frameworks matter anymore? There's only one way to actually find out. Time to release one.
