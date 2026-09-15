@@ -24,12 +24,12 @@ In this article, I want to break the question and its implications down into the
 
 > Imagine there's no React
 > It's easy if you try
-> No Svelte below us\*
+> No Svelte below us
 > Above us, only bi(nary)
 > Imagine all the people
 > Prompting for today
 
-\*Sorry, Svelte, for replacing you with the word "hell". It's not because I perceive a resemblance, I just liked the way it sounded.
+(Sorry, Svelte, for replacing you with the word "hell". It's not because I perceive a resemblance, I just liked the way it sounded.)
 
 So let's return to the argument, and spell it out a bit more. This is the conventional wisdom I am hearing right now:
 
