@@ -36,6 +36,7 @@ function renderInline(markdown, resolveHref = (href) => href) {
   let html = escapeHtml(markdown);
 
   html = html.replace(/`([^`]+)`/g, "<code>$1</code>");
+  html = html.replace(/~~([^~]+)~~/g, "<del>$1</del>");
   html = html.replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>");
   html = html.replace(/\*([^*]+)\*/g, "<em>$1</em>");
   html = html.replace(/(^|[^\w])_([^_\n]+)_($|[^\w])/g, "$1<em>$2</em>$3");
