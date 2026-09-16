@@ -1,5 +1,5 @@
 ---
-date: 2026-09-15
+date: 2026-09-16
 published: true
 ogImage: /images/og/do-frameworks-matter-anymore.png
 ---
@@ -110,7 +110,7 @@ Long story short, they started the process of moving off of this home-grown meta
 
 The timeline of this anecdote is pretty definitively right before agentic programming would git gud. Assuming you're starting a greenfield project right now, and assuming it's not just for demonstration purposes or a 1-off presentational website, I think Ricky's statement is both more true now than ever, and a little bit wrong.
 
-Let's start with the wrong: _"building a framework is really hard"._ It's really not anymore. I mean, it depends on what you want. If you want a good, robust, bug-free, secure, full-stack framework, it usually takes more than a couple of prompts to really flesh out. And then when you start using it, you may find that LLMs can't really make it work for all the things you ask it to do, so they just quietly build hacks around your framework, and depending on how you're building this framework those hacks end up becoming part of the framework. Avoiding bolting on hacky workarounds and deciding on good, robust, and extensible abstractions require a bit of work and iteration, even with frontier models, in my experience.
+Let's start with the wrong: _"building a framework is really hard"._ It's really not anymore. I mean, it depends on what you want. If you want a good, robust, bug-free, secure, full-stack framework, it's gonna take a lot more than a couple of prompts to really flesh out. And then when you start using it, you may find that LLMs can't really make it work for all the things you ask it to do, so they just quietly build hacks around your framework, and depending on how you're building this framework those hacks end up becoming part of the framework. Avoiding bolting on hacky workarounds and deciding on good, robust, and extensible abstractions require a bit of work and iteration, even with frontier models, in my experience.
 
 However, building a framework, not even a shitty one, just an okay one, is not really hard. I know this because if you don't use a framework and you start building a website with an LLM, it will build a framework for you. The LLM might not have the feature breadth and definitely not the marketing dollars or ambition to sell you on its framework, but it still builds a framework. It'll make a framework just like it'll make functions, and classes, and all the typical abstractions we used to make when we programmed "by hand". Just because you're looking at it less doesn't mean the agent isn't fundamentally doing the exact same thing we're doing. I don't even care to call it slop, it's progressive feature adding with no cleanup, that's how I built all of my first projects. This is nothing new, the biggest thing that's changed is speed.
 
@@ -185,4 +185,4 @@ Do new frameworks matter anymore? There's only one way to actually find out. Let
 
 ---
 
-_Thank you to [Alex Anderson](https://bsky.app/profile/ralexanderson.com), [Moishi Netzer](https://x.com/moishinetzer), and [Elijah F. Hopp](https://x.com/elijahfhopp) for reading an early draft of this post and providing valuable feedback._ 🙏
+_Thank you to [Alex Anderson](https://bsky.app/profile/ralexanderson.com), [Moishi Netzer](https://x.com/moishinetzer), and [Elijah F. Hopp](https://x.com/elijahfhopp) for reading an early draft of this post and providing valuable feedback. Thank you also to my colleagues [Matt Brophy](https://x.com/brophdawg11), [Mark Dalgleish](https://x.com/markdalgleish), and [Michael Jackson](https://x.com/mjackson) for endless debates and sharing their own thoughts on this topic._ 🙏
