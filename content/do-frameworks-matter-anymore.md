@@ -74,15 +74,15 @@ I'm old enough to remember the "framework wars" of the 2010s. When I did my own 
 
 I ultimately picked React, and many other people did too. But why? What made React so compelling as a framework?
 
-React was solving a number of problems. Despite what [Mr. Rauch thinks](https://x.com/rauchg/status/2088757738037989755) (and ordinarily, he is pretty much on the money), React didn't "win" because it came with a component library that wraps a great style system and lower-level accessible components and utilities that you can own and morph to your own needs. `shadcn/ui` is awesome, don't get me wrong. But even within the component-library/design system story, it's the latest evolution in a long line of successors from Radix to Reach UI to Material UI to Bootstrap and many, many more that I'm skipping, forgetting, or unaware of. The existence of `shadcn/ui` on top of many other popular incumbents is a testament to what makes React great, not the other way around.
-
-If you ask the React team why React won or why it's so great, they will likely say "composition". I find it very difficult to encapsulate exactly what made React so special, but I think this is a big part of it. I didn't really understand what this meant early in my career and React usage. I just knew that:
+If you ask the React team why React won or why it's so great, they will likely say "composition". I find it very difficult to encapsulate exactly what made React so special, but I think this is a big part of it. I didn't really understand what "composition" meant early in my career and React usage. I just knew that:
 
 - React was really easy to plug into an existing site
 - React had a really nice way to encapsulate logic and markup into contained and potentially reusable components
 - React had a robust and constantly growing ecosystem of libraries that helped fill in additional pieces I needed: routing, styling, head/meta tag management, etc.
 
 I would learn later that React also provided server-side rendering (SSR) out the gate, making it look and feel a good bit like PHP with its HTML-in-your-scripting-language sort of experience. Setting this up was a bit more involved, especially for folks like myself who were more frontend-focused. This led to the rise of the "backend-for-frontend engineer" and the meta-frameworks like Next.js and Remix (the old one, [sorry](https://remix.run/remix-history)).
+
+React was solving a number of problems. Despite what [Mr. Rauch thinks](https://x.com/rauchg/status/2088757738037989755) (and ordinarily, he is pretty much on the money), React didn't "win" because it came with a component library that wraps a great style system and lower-level accessible components and utilities that you can own and morph to your own needs. `shadcn/ui` is awesome, don't get me wrong. But even within the component-library/design system story, it's the latest evolution in a long line of successors from Radix to Reach UI to Material UI to Bootstrap and many, many more that I'm skipping, forgetting, or unaware of. The existence of `shadcn/ui` on top of many other popular incumbents is a testament to what makes React great, not the other way around.
 
 This long but brief diversion of why React "won" hardly does justice to the full history, and it certainly doesn't even touch on what makes other web frameworks interesting. Despite React's predominance, plenty of other frameworks and meta-frameworks get millions of weekly downloads and are loved by many a developer. It also completely glosses over the popularity of non-JavaScript-based frameworks such as Laravel and Ruby on Rails.
 
@@ -185,4 +185,4 @@ Do new frameworks matter anymore? There's only one way to actually find out. Let
 
 ---
 
-_Thank you to [Alex Anderson](https://bsky.app/profile/ralexanderson.com), [Moishi Netzer](https://x.com/moishinetzer), and [Elijah F. Hopp](https://x.com/elijahfhopp) for reading an early draft of this post and providing valuable feedback. Thank you also to my colleagues [Matt Brophy](https://x.com/brophdawg11), [Mark Dalgleish](https://x.com/markdalgleish), and [Michael Jackson](https://x.com/mjackson) for endless debates and sharing their own thoughts on this topic._ 🙏
+_Thank you to [Alex Anderson](https://bsky.app/profile/ralexanderson.com), [Moishi Netzer](https://x.com/moishinetzer), [Elijah F. Hopp](https://x.com/elijahfhopp), and [Braydon Coyer](https://x.com/BraydonCoyer) for reading an early draft of this post and providing valuable feedback. Thank you also to my colleagues [Matt Brophy](https://x.com/brophdawg11), [Mark Dalgleish](https://x.com/markdalgleish), and [Michael Jackson](https://x.com/mjackson) for endless debates and sharing their own thoughts on this topic._ 🙏
