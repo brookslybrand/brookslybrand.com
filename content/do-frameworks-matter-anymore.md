@@ -6,7 +6,7 @@ ogImage: /images/og/do-frameworks-matter-anymore.png
 
 # Do Frameworks Matter Anymore?
 
-I'm not trying to be facetious. I want to really want consider whether or not, in 2026, in the age of vibe coding, agentic programming, loop or graph or whatever diagrammatic metaphor-based engineering is most popular, does it matters what web framework you use? More importantly (to me and my particular interests), and at the risk of [Betteridge-ing myself](https://en.wikipedia.org/wiki/Betteridge%27s_law_of_headlines): should we make new frameworks?
+I'm not trying to be facetious. I really want consider whether or not, in 2026, in the age of vibe coding, agentic programming, loop or graph or whatever diagrammatic metaphor-based engineering is most popular, does it matters what web framework you use? More importantly (to me and my particular interests), and at the risk of [Betteridge-ing myself](https://en.wikipedia.org/wiki/Betteridge%27s_law_of_headlines): should we make new frameworks?
 
 React won, so do we ever try anything new?
 
